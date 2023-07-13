@@ -20,7 +20,7 @@ https://dmerk2.github.io/Password-Generator/
 
 ## Usage
 
-![portfolio](./assets/images/preview.gif)
+![portfolio](./assets/images/03-javascript-homework-demo.png)
 
 ## Credits
 

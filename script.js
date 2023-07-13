@@ -1,89 +1,9 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
-let upperCase = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-let lowerCase = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-let specialChars = [
-  "!",
-  "@",
-  "#",
-  "$",
-  "%",
-  "^",
-  "&",
-  "*",
-  "(",
-  ")",
-  "_",
-  "+",
-  "=",
-  "-",
-  "{",
-  "}",
-  "]",
-  "[",
-  ";",
-  ",",
-  ".",
-  ">",
-  "<",
-  "?",
-  "/",
-  "|",
-];
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let lowerCase = "abcdefghijklmnopqrstuvwxyz";
+let specialChars = "`~!@#$%^&*()_+=-|}{[]:;'?/.>,<";
+let numbers = "1234567890";
 
 // Write password to the #password input
 function writePassword() {
@@ -93,15 +13,49 @@ function writePassword() {
   passwordText.value = password;
 }
 
-let generatePassword = function () {
-  let passwordLength = prompt(
-    "How many characters do you want your password between 8 - 128?"
+var generatePassword = function () {
+  let userChoice = prompt(
+    "Please pick a password length between 8 - 128 characters"
   );
-  if (passwordLength < 8 || passwordLength > 128) {
-    alert("Please pick between 8 - 128 characters");
+  if (userChoice < 8 || userChoice > 128 || null) {
+    alert("Please choose the correct amount of characters");
+    return;
   }
-  console.log(passwordLength);
+
+  let newPassword = "";
+  let addUpperCase = confirm(
+    "Would you like to add uppercase letters to your new password?"
+  );
+  if (addUpperCase) {
+    newPassword += addUpperCase;
+    console.log(addUpperCase);
+  }
+  let addLowerCase = confirm(
+    "Would you like to add lowercase letters to your new password?"
+  );
+  if (addLowerCase) {
+    newPassword += addLowerCase;
+    console.log(addLowerCase);
+  }
+  let addSpecialChars = confirm(
+    "Would you like to add special characters to your new password?"
+  );
+  if (addSpecialChars) {
+    newPassword += addSpecialChars;
+    console.log(addSpecialChars);
+  }
+  let addNumbers = confirm(
+    "Would you like to add numbers to your new password?"
+  );
+  if (addNumbers) {
+    newPassword += addNumbers;
+    console.log(addNumbers);
+  }
 };
+
+// for (let i = 0; i < newPassword.length; i++) {
+
+// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
