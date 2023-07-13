@@ -13,13 +13,12 @@ function writePassword() {
   passwordText.value = password;
 }
 
-var generatePassword = function () {
-  let userChoice = prompt(
-    "Please pick a password length between 8 - 128 characters"
-  );
-  if (userChoice < 8 || userChoice > 128 || null) {
-    alert("Please choose the correct amount of characters");
-    return;
+let generatePassword = function () {
+  let userChoice = 0;
+
+  while (userChoice < 8 || userChoice > 128 || null || isNaN(userChoice)) {
+    userChoice = prompt(
+      "Please pick a password length between 8 - 128 characters")
   }
 
   let newPassword = "";
@@ -27,35 +26,52 @@ var generatePassword = function () {
     "Would you like to add uppercase letters to your new password?"
   );
   if (addUpperCase) {
-    newPassword += addUpperCase;
+    newPassword += upperCase;
     console.log(addUpperCase);
   }
   let addLowerCase = confirm(
     "Would you like to add lowercase letters to your new password?"
   );
   if (addLowerCase) {
-    newPassword += addLowerCase;
+    newPassword += lowerCase;
     console.log(addLowerCase);
   }
   let addSpecialChars = confirm(
     "Would you like to add special characters to your new password?"
   );
   if (addSpecialChars) {
-    newPassword += addSpecialChars;
+    newPassword += specialChars;
     console.log(addSpecialChars);
   }
   let addNumbers = confirm(
     "Would you like to add numbers to your new password?"
   );
   if (addNumbers) {
-    newPassword += addNumbers;
+    newPassword += numbers;
     console.log(addNumbers);
   }
+
+  if (
+    addUpperCase === false &&
+    addLowerCase === false &&
+    addSpecialChars === false &&
+    addNumbers === false
+  ) {
+    alert(
+      "You must pick at least one type of characters to be able to generate a password"
+    );
+    window.location.reload();
+  }
+
+  let arr = Array.from(newPassword);
+  console.log(arr);
+  let result = "";
+
+  for (let i = 0; i < userChoice; i++) {
+    result += arr[Math.floor(Math.random() * arr.length)];
+  }
+  return result;
 };
-
-// for (let i = 0; i < newPassword.length; i++) {
-
-// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
