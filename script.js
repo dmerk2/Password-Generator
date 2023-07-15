@@ -16,9 +16,12 @@ function writePassword() {
 let generatePassword = function () {
   let userChoice = 0;
 
+  // Until these conditions are met keep the prompt opening up
   while (userChoice < 8 || userChoice > 128 || null || isNaN(userChoice)) {
     userChoice = prompt(
-      "Please pick a password length between 8 - 128 characters")
+      "Please pick a password length between 8 - 128 characters"
+    );
+    return "";
   }
 
   let newPassword = "";
@@ -27,30 +30,26 @@ let generatePassword = function () {
   );
   if (addUpperCase) {
     newPassword += upperCase;
-    console.log(addUpperCase);
   }
   let addLowerCase = confirm(
     "Would you like to add lowercase letters to your new password?"
   );
   if (addLowerCase) {
     newPassword += lowerCase;
-    console.log(addLowerCase);
   }
   let addSpecialChars = confirm(
     "Would you like to add special characters to your new password?"
   );
   if (addSpecialChars) {
     newPassword += specialChars;
-    console.log(addSpecialChars);
   }
   let addNumbers = confirm(
     "Would you like to add numbers to your new password?"
   );
   if (addNumbers) {
     newPassword += numbers;
-    console.log(addNumbers);
   }
-
+  // If user clicks cancel for all four options, the page will reload to the beginning
   if (
     addUpperCase === false &&
     addLowerCase === false &&
@@ -63,10 +62,12 @@ let generatePassword = function () {
     window.location.reload();
   }
 
+  // Turn newPassword into an array
   let arr = Array.from(newPassword);
   console.log(arr);
   let result = "";
 
+  // Iterate through the users choices and print the result in a random order
   for (let i = 0; i < userChoice; i++) {
     result += arr[Math.floor(Math.random() * arr.length)];
   }
