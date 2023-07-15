@@ -21,7 +21,6 @@ let generatePassword = function () {
     userChoice = prompt(
       "Please pick a password length between 8 - 128 characters"
     );
-    return "";
   }
 
   let newPassword = "";
